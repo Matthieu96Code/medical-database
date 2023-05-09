@@ -1,3 +1,5 @@
+CREATE DATABASE medical
+
 CREATE TABLE "patients" (
   "id" INT,
   "name" VARCHAR(60),
