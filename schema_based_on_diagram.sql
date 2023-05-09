@@ -17,3 +17,21 @@ CREATE TABLE "medical_histories" (
     FOREIGN KEY ("patient_id")
       REFERENCES "patients"("id")
 );
+
+-- create treatments table
+CREATE TABLE "treatments" (
+  "id" INT,
+  "type" VARCHAR(60),
+  "name" VARCHAR(60),
+  PRIMARY KEY ("id")
+);
+
+-- create invoices table
+CREATE TABLE "invoices" (
+  "id" INT,
+  "total_amount" DECIMAL,
+  "generated_at" TIMESTAMP,
+  "payed_at" TIMESTAMP,
+  "medical_history_id" INT,
+  PRIMARY KEY ("id")
+);
