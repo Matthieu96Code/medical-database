@@ -1,5 +1,7 @@
+-- create medical database
 CREATE DATABASE medical
 
+-- create patients table
 CREATE TABLE "patients" (
   "id" INT,
   "name" VARCHAR(60),
@@ -7,6 +9,7 @@ CREATE TABLE "patients" (
   PRIMARY KEY ("id")
 );
 
+-- create medical_histories table
 CREATE TABLE "medical_histories" (
   "id" INT,
   "admitted" TIMESTAMP,
@@ -34,4 +37,21 @@ CREATE TABLE "invoices" (
   "payed_at" TIMESTAMP,
   "medical_history_id" INT,
   PRIMARY KEY ("id")
+);
+
+-- create invoice_items table
+CREATE TABLE "invoice_items" (
+  "id" INT,
+  "unit_price" DECIMAL,
+  "quantity" INT,
+  "total_price" DeCIMAL,
+  "invoice_id" INT,
+  "treatment_id" INT,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "FK_invoice_items.treatment_id"
+    FOREIGN KEY ("treatment_id")
+      REFERENCES "treatments"("id"),
+  CONSTRAINT "FK_invoice_items.invoice_id"
+    FOREIGN KEY ("invoice_id")
+      REFERENCES "invoices"("id")
 );
